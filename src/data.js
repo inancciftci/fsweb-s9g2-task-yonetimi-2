@@ -7,7 +7,7 @@ export const initialTasks = [
     description:
       "Bugün öğrendiklerimizden hangilerini projede kullanabiliriz, hangi kısımları mevcut bilgimizle yapabiliriz?",
     people: ["ömer", "emre"],
-    deadline: "2023-08-23",
+    deadline: "2023-12-17",
     status: "yapıldı",
   },
   {

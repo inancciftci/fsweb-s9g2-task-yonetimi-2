@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 export default function TaskHookForm({ kisiler, submitFn }) {
   const {
@@ -21,10 +21,9 @@ export default function TaskHookForm({ kisiler, submitFn }) {
     reset({
       title: "",
       description: "",
-      deadline: ""
+      deadline: "",
     });
   }
-
 
   return (
     <form className="taskForm" onSubmit={handleSubmit(mySubmit)}>
@@ -74,7 +73,7 @@ export default function TaskHookForm({ kisiler, submitFn }) {
                   required: "Lütfen en az 1 kişi seçin",
                   validate: {
                     maxKisi: (value) =>
-                      value.length < 3 || "En fazla 3 kişi seçebilirsiniz",
+                      value.length <= 3 || "En fazla 3 kişi seçebilirsiniz",
                   },
                 })}
                 type="checkbox"
@@ -96,13 +95,17 @@ export default function TaskHookForm({ kisiler, submitFn }) {
         </label>
         <input
           className="input-text"
-          {...register("deadline", { required: "Son teslim tarihi seçmelisiniz" })}
+          {...register("deadline", {
+            required: "Son teslim tarihi seçmelisiniz",
+          })}
           id="deadline"
           name="deadline"
           type="date"
           min="2023-01-25"
         />
-        {errors.deadline && <p className="input-error">{errors.deadline.message}</p>}
+        {errors.deadline && (
+          <p className="input-error">{errors.deadline.message}</p>
+        )}
       </div>
 
       <div className="form-line">
